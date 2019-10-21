@@ -8,11 +8,11 @@ module.exports = {
   resolve: {
 		modules: ['node_modules', './src'],
 		extensions: ['.js', '.jsx'],
-	},
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
   },
+  output: {
+    filename: '[name].bundle.js',
+		path: path.resolve(__dirname, 'dist'),
+	},
   module: {
 		rules: [
       {
@@ -27,7 +27,9 @@ module.exports = {
 		]
   },
   plugins: [
-    new MonacoWebpackPlugin(),
+    new MonacoWebpackPlugin(
+      { languages: ["typescript", "javascript", "css"] }
+    )
   ],
   devServer: {
 		port,
