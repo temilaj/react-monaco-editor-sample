@@ -1,4 +1,5 @@
 const path = require('path');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const port = process.env.PORT || 3000;
 
 module.exports = {
@@ -25,9 +26,12 @@ module.exports = {
       },
 		]
   },
+  plugins: [
+    new MonacoWebpackPlugin(),
+  ],
   devServer: {
 		port,
-    // historyApiFallback: true,
     compress: true, 
+    publicPath: '/dist/',
 	}
 };
