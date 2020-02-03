@@ -6,34 +6,34 @@ module.exports = {
   entry: './src/App.jsx',
   mode: 'development',
   resolve: {
-		modules: ['node_modules', './src'],
-		extensions: ['.js', '.jsx'],
+    modules: ['node_modules', './src'],
+    extensions: ['.js', '.jsx']
   },
   output: {
     filename: '[name].bundle.js',
-		path: path.resolve(__dirname, 'dist'),
-	},
+    path: path.resolve(__dirname, 'dist')
+  },
   module: {
-		rules: [
+    rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       },
-			{
+      {
+        test: /\.ttf$/i,
+        use: 'file-loader'
+      },
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
-		]
+        loader: 'babel-loader'
+      }
+    ]
   },
-  plugins: [
-    new MonacoWebpackPlugin(
-      { languages: ["typescript", "javascript", "css"] }
-    )
-  ],
+  plugins: [new MonacoWebpackPlugin()],
   devServer: {
-		port,
-    compress: true, 
-    publicPath: '/dist/',
-	}
+    port,
+    compress: true,
+    publicPath: '/dist/'
+  }
 };
